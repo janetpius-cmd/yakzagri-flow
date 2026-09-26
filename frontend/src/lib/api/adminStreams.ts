@@ -1,7 +1,6 @@
 import { createQueryString, request } from "./client";
 import type {
   AdminStreamListResponse,
-  StreamClawbackPreviewResponse,
   StreamStatus,
   VestingState,
 } from "./types";
@@ -25,15 +24,5 @@ export const adminStreamsApi = {
         adminTag: params?.adminTag,
       })}`,
       { token },
-    ),
-
-  clawbackPreview: (token: string, streamId: string, amount: string) =>
-    request<StreamClawbackPreviewResponse>(
-      `/admin/streams/${encodeURIComponent(streamId)}/clawback/preview`,
-      {
-        token,
-        method: "POST",
-        body: JSON.stringify({ amount }),
-      },
     ),
 };
